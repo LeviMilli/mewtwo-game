@@ -25,8 +25,10 @@ egg.src = "/images/eggs.png"
 let gravity = 0.1
 let score = 0
 let player
-let mewY = canvas.height - 110
 let mewX =  50
+let mewY = canvas.height - 110
+let mewVX = -7
+let mewVY = 3
 let eggs = [
     {x: 600 , y: canvas.height - 200         } ,
     {x:1000 , y: canvas.height - 200          }
@@ -39,6 +41,7 @@ let maxIncrement = 0
 let gameOver = false
 let jumping = false
 let grounded = true
+
 
 
 
@@ -67,6 +70,9 @@ function draw(){
                 
                 
             }
+        if(eggs[i].x <= (mewX + 150) && mewY >= eggs[i].y){
+                gameOver = true
+            }
     }
 
 
@@ -91,19 +97,26 @@ function draw(){
     }
 
     if(jumping){
-        mewY = mewY -3
-        
+        gravity = 0.1
+        mewVX += gravity
+        mewY += mewVX 
+        mewVY = 3
+        grounded = false
     }
-    if (!jumping ){
-        mewY = mewY +3
-    }
-    // if(mewH <= 331){
-    //     birdY = birdY - 10
-    //     jumping = false
-    // }
-
-
+    if (!jumping && (mewY <= (canvas.height -115) )){
+        gravity = 0.1
+        mewVY += gravity
+        mewY += mewVY
+        mewVX = -7
+        grounded = true
+    } 
     
+    
+    if (grounded){
+        mewVX = -7
+        gravity = 0
+    }
+
 
 
 }
