@@ -51,7 +51,10 @@ let grounded = true
 // let bird = new Image();
 // bird.src = './images/bird.png'
 
-
+// let eggs = [
+//     {x: 600 , y: canvas.height - 200         } ,
+//     {x:1000 , y: canvas.height - 200          }
+// ]
 
 
 function draw(){
@@ -70,9 +73,9 @@ function draw(){
                 
                 
             }
-        if(eggs[i].x <= (mewX + 150) && mewY >= eggs[i].y){
-                gameOver = true
-            }
+        // if(eggs[i].x <= (mewX + 150) && mewY >= eggs[i].y){
+        //         gameOver = true
+        //     }
     }
 
 
@@ -104,7 +107,7 @@ function draw(){
         grounded = false
     }
     if (!jumping && (mewY <= (canvas.height -115) )){
-        gravity = 0.1
+        // gravity = 0.1
         mewVY += gravity
         mewY += mewVY
         mewVX = -7
@@ -112,10 +115,10 @@ function draw(){
     } 
     
     
-    if (grounded){
-        mewVX = -7
-        gravity = 0
-    }
+    // if (grounded){
+    //     mewVX = -7
+    //     gravity = 0
+    // }
 
 
 
