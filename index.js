@@ -25,8 +25,8 @@ egg.src = "/images/eggs.png"
 let gravity = 0.1
 let score = 0
 let player
-let mewH = canvas.height - 110
-let mewW =  50
+let mewY = canvas.height - 110
+let mewX =  50
 let eggs = [
     {x: 600 , y: canvas.height - 200         } ,
     {x:1000 , y: canvas.height - 200          }
@@ -38,6 +38,7 @@ let maxY = 600
 let maxIncrement = 0
 let gameOver = false
 let jumping = false
+let grounded = true
 
 
 
@@ -52,7 +53,7 @@ let jumping = false
 
 function draw(){
     ctx.drawImage(sb, 0 ,0 , 2000, 500)
-    ctx.drawImage(mr, mewW , mewH, 150, 110)
+    ctx.drawImage(mr, mewX , mewY, 150, 110)
     // ctx.drawImage(egg, eggsX, eggsY, 100, 200)
 
 
@@ -85,51 +86,49 @@ function draw(){
     
 
 
-
-
-    if(mewH >=500){
-        maxIncrement = 0
-        jumping = false
-    }
-    if(mewH <= 331){
-        maxIncrement = 2
+    if(mewY >= (canvas.height -109)){
+        mewY = canvas.height-110
     }
 
-
-    jump()
-
-
-}
-
-
-
-function jump(){
-    document.addEventListener('keydown', (event) => {
-        if(event.key == 32 && jumping === false){
-            mewH -= 3
-            jumping = true
-        }
-    })
-    
-    document.addEventListener('keyup', () => {
-        if(!gameOver){
-            mewH *= 1 
-        }
+    if(jumping){
+        mewY = mewY -3
         
+    }
+    if (!jumping ){
+        mewY = mewY +3
+    }
+    // if(mewH <= 331){
+    //     birdY = birdY - 10
+    //     jumping = false
+    // }
+
+
     
-    }) 
+
+
 }
+
+
+
 
 
 window.addEventListener('load', () => {
     
     draw()
+    document.addEventListener('mousedown', (event) => {
+        
+            jumping = true
+            console.log("hello")
+                    
+        
+    })
     
-    document.addEventListener('mousedown', () => {
-        falling = false;
-    })
     document.addEventListener('mouseup', () => {
-        falling = true;
-    })
-
+        
+            jumping = false
+        
+        
+    
+    }) 
 })
+ 
