@@ -30,8 +30,8 @@ let mewY = canvas.height - 110
 let mewVX = -7
 let mewVY = 3
 let eggs = [
-    {x: 600 , y: canvas.height - 200         } ,
-    {x:1000 , y: canvas.height - 200          }
+    {x: 600 , y: canvas.height - 150         } ,
+    {x:1000 , y: canvas.height - 150          }
 ]
 let eggsX = 600
 let eggsY = canvas.height - 200
@@ -41,7 +41,8 @@ let maxIncrement = 0
 let gameOver = false
 let jumping = false
 let grounded = true
-
+let originalHeight = 110
+let crouch = false
 
 
 
@@ -64,7 +65,7 @@ function draw(){
 
 
     for(let i = 0; i <eggs.length; i++){
-        ctx.drawImage(egg, eggs[i].x, eggs[i].y, 100, 200)
+        ctx.drawImage(egg, eggs[i].x, eggs[i].y, 75, 150)
         eggs[i].x = eggs[i].x - 3
 
 
@@ -72,18 +73,25 @@ function draw(){
                 eggs[i].x = 1000
                 
                 
-            }
-        // if(eggs[i].x <= (mewX + 150) && mewY >= eggs[i].y){
-        //         gameOver = true
-        //     }
+        }
+        if(eggs[i].x <= (mewX + 150) && mewY >= eggs[i].y && eggs[i].x + 75 >= (mewX + 150) ){
+                gameOver = true
+        }
+
+        if (eggs[i].x + 75 <= 0 ){
+                score = score + 10
+        }
     }
 
 
+  
+     if (crouch){
+        ctx.drawImage(mr, mewX , mewY, 150, 55)
+    
+     }   
 
 
-
-    eggsX = eggsX - 2
-   
+  
    
     intervalId = requestAnimationFrame(draw)
    
@@ -93,6 +101,8 @@ function draw(){
      
     }
     
+
+
 
 
     if(mewY >= (canvas.height -109)){
@@ -113,6 +123,11 @@ function draw(){
         mewVX = -7
         grounded = true
     } 
+
+    ctx.font = '22px Roboto';
+    ctx.fillText(`Score: ${score}`, 20,  50)
+    ctx.fillStyle = "steelblue"
+    // ctx.fillText(`Score: ${score}`, 20, canvas.height - 50)
     
     
     // if (grounded){
@@ -133,7 +148,7 @@ window.addEventListener('load', () => {
     draw()
     document.addEventListener('mousedown', (event) => {
         
-            jumping = true
+        jumping = true
             console.log("hello")
                     
         
@@ -141,10 +156,30 @@ window.addEventListener('load', () => {
     
     document.addEventListener('mouseup', () => {
         
-            jumping = false
+        jumping = false
         
         
     
     }) 
+
+    
+    document.addEventListener("keydown", function(event) {
+    if (event.keyCode === 83) {
+        console.log('Enter is pressed!');
+        crouch = true
+    }
+    });
+
+    document.addEventListener("keyup", function(event) {
+        if (event.keyCode === 83) {
+            console.log('up');
+            crouch = true
+        }
+        });
+
+    document.addEventListener( 'ArrowDown', () => {
+        
+        crouch = true
+    })
 })
  
