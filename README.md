@@ -3,7 +3,7 @@ An html based game disigned entirely using canvaS
 
 Users play as MewTwo and jump over oncoming Exeggutor 
 
-<img src= "https://user-images.githubusercontent.com/107660704/202803076-8ba3bf3e-b5c6-4f95-88e9-534f1c4c69e4.JPG"></img>
+<img height="100px" src= "https://user-images.githubusercontent.com/107660704/202803076-8ba3bf3e-b5c6-4f95-88e9-534f1c4c69e4.JPG"></img>
 ![alt tag](https://media.giphy.com/media/2zg5SKPLDo8ZI3Gglq/giphy.gif)
 
 ## How It's Made:
@@ -31,3 +31,4 @@ Take a look at these couple repos that I have in my portfolio:
 
 **The Notorius Codewars:** https://github.com/LeviMilli/Codewars
 
+**NOT AFFILIATED WITH POKEMON OR ITS ENTITY IN ANY WAY. EVERYTHING HERE IS A PARODY USING LIKENESS AND SHOULD NOT BE TAKEN SERIOUSLY**
