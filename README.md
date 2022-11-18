@@ -10,6 +10,7 @@ Users play as MewTwo and jump over oncoming Exeggutor
 
 
 **Tech used:** HTML, CSS, JavaScript
+
 Game is based entirely in HTML using canvas. Colission detection and gravity were implemented on x and y axis. Button events were used for controls.
 
 
